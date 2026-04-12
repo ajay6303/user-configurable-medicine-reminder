@@ -16,11 +16,12 @@ An embedded systems project built on the **ARM7 (LPC2148)** architecture to help
 ## Tools Used
 * **Keil µVision4:** For C coding and HEX file generation.
 * **Proteus 8:** For circuit simulation and testing.
-* **GCC & GDB:** Used for cross-compilation and debugging.
+* **flashmagic:** For hardware circuit testing
 
 ## How to Run
-1. Load the `.hex` file into the LPC2148 in Proteus.
-2. Press 'Play' to see the real-time clock.
-3. Use the external interrupts to enter the configuration menu.
+1. **software:** Load the `.hex` file into the LPC2124 in Proteus.
+2. **hardware:** Load the `.hex` file into the LPC2148 kit through flashmagic.
+3. Press 'Play' to see the real-time clock.
+4. Use the external interrupts to enter the configuration menu.
 
 ![Circuit Diagram](project_circuit.jpeg)
