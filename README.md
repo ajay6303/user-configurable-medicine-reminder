@@ -20,45 +20,44 @@ The core objective of this project is to build a standalone **User-Configurable 
 * **Fail-Safe Timeout:** Maintain a strict 60-second non-blocking countdown window for manual user acknowledgment, falling back to autonomous safety recovery if unanswered.
 
 ---
-
 ## 🏗️ System Architecture & Block Diagram
 
 The system coordinates several synchronous and asynchronous peripherals through the LPC2148 central processing unit:
-+--------------------------------------------------------+
-|                 INPUT & CONTROL UNITS                  |
-|                                                        |
-|   +-------------------+        +-------------------+   |
-|   | 4x4 Matrix Keypad |        |   Switch 1 (P0.1) |   |
-|   | (Data Entry Mode) |        | [EINT0 Setup Mode]|   |
-|   +---------+---------+        +---------+---------+   |
-+-------------|----------------------------|-------------+
-              |                            |
-              v                            v
-+--------------------------------------------------------+
-|             CENTRAL PROCESSING UNIT (LPC2148)          |
-|                                                        |
-|    +-------------------+      +-------------------+    |
-|    |   Vectored Clear  |      |   Internal Real   |    |
-|    | Interrupt Handler |      | Time Clock (RTC)  |    |
-|    +-------------------+      +-------------------+    |
-+---------------------|----------------------|-----------+
-                      |                      |
-                      v                      v
-+--------------------------------------------------------+
-|                OUTPUT & ALERT SYSTEM                   |
-|                                                        |
-|   +-------------------+        +-------------------+   |
-|   |   16x2 Alphanumeric|        |  Piezo Buzzer     |   |
-|   |   LCD (Character) |        |  Alarm (P0.23)    |   |
-|   +-------------------+        +-------------------+   |
-|                                                        |
-|                        +-------------------+           |
-|                        |  Switch 2 (P0.3)  |           |
-|                        | [EINT1 Ack Alarm] |           |
-|                        +-------------------+           |
-+--------------------------------------------------------+
 
----
+```text
+    +--------------------------------------------------------+
+    |                 INPUT & CONTROL UNITS                  |
+    |                                                        |
+    |   +-------------------+        +-------------------+   |
+    |   | 4x4 Matrix Keypad |        |   Switch 1 (P0.1) |   |
+    |   | (Data Entry Mode) |        | [EINT0 Setup Mode]|   |
+    |   +---------+---------+        +---------+---------+   |
+    +-------------|----------------------------|-------------+
+                  |                            |
+                  v                            v
+    +--------------------------------------------------------+
+    |             CENTRAL PROCESSING UNIT (LPC2148)          |
+    |                                                        |
+    |    +-------------------+      +-------------------+    |
+    |    |   Vectored Clear  |      |   Internal Real   |    |
+    |    |   Interrupt Handler |      | Time Clock (RTC)  |    |
+    |    +-------------------+      +-------------------+    |
+    +---------------------|----------------------|-----------+
+                          |                      |
+                          v                      v
+    +--------------------------------------------------------+
+    |                OUTPUT & ALERT SYSTEM                   |
+    |                                                        |
+    |   +-------------------+        +-------------------+   |
+    |   |   16x2 Alphanumeric|        |  Piezo Buzzer     |   |
+    |   |   LCD (Character) |        |  Alarm (P0.23)    |   |
+    |   +-------------------+        +-------------------+   |
+    |                                                        |
+    |                        +-------------------+           |
+    |                        |  Switch 2 (P0.3)  |           |
+    |                        | [EINT1 Ack Alarm] |           |
+    |                        +-------------------+           |
+    +--------------------------------------------------------+---
 
 ## 🔌 Hardware Component Specifications & Pin Mapping
 
@@ -109,14 +108,12 @@ Handles real-time priority context switching for critical user inputs.
 
 ---
 
-## 🔄 Step-by-Step Functional Operational Flow
-
 [ POWER ON SYSTEM ]
-|
-v
-[ Peripheral Initialization ] ---> (Registers RTC, LCD, KPM, Buzzer, & VIC Interrupts)
-|
-v
+            |
+            v
+ [ Peripheral Initialization ] ---> (Registers RTC, LCD, KPM, Buzzer, & VIC Interrupts)
+            |
+            v
 +---> [ CLOCK-ONLY MODE ]
 |           |
 |           +---> Continuously reads internal RTC registers.
@@ -151,9 +148,7 @@ v
 |                               +---> [1-Min Timeout Reached]    ---> Autostop Buzzer, Clear Message Log
 |                               |
 v                               v
-+-------------------------------+---------------------> [ Return to Background Loop ]
-
----
++-------------------------------+---------------------> [ Return to Background Loop ]---
 
 ## 📈 Project Advantages vs. Real-World Limitations
 
