@@ -58,30 +58,30 @@ The system coordinates several synchronous and asynchronous peripherals through 
     |                        | [EINT1 Ack Alarm] |           |
     |                        +-------------------+           |
     +--------------------------------------------------------+---
+```
+---
+### 🛠️ Core Hardware Requirements
 
-## 🔌 Hardware Component Specifications & Pin Mapping
+* 🧠 **LPC2148 Microcontroller:** 32-bit ARM7TDMI-S core, 512KB on-chip Flash, 40KB RAM, integrated RTC.
+* 📺 **16x2 Alphanumeric LCD:** Liquid crystal display configured in high-throughput 8-bit parallel interfacing mode.
+* ⌨️ **4x4 Matrix Keypad:** 16-key matrix layout utilized to scan user numeric inputs without exhausting GPIO pins.
+* 🔔 **Piezo Buzzer:** High-decibel audio alert transducer driven via a transistor amplification switch.
+* 🔘 **Tactile Push Buttons:** Hardware switches wired with pull-up networks dedicated to low-latency external interrupts.
+* 🔌 **USB-to-UART Converter (CP2102 / PL2303):** For ISP (In-System Programming) via Flash Magic.
 
-### 🛠️ Hardware Requirements
-1. **LPC2148 Microcontroller:** 32-bit ARM7TDMI-S core, 512KB on-chip Flash, 40KB RAM, integrated RTC.
-2. **16x2 Alphanumeric LCD:** Liquid crystal display configured in high-throughput 8-bit parallel interfacing mode.
-3. **4x4 Matrix Keypad:** 16-key matrix layout utilized to scan user numeric inputs without exhausting GPIO pins.
-4. **Piezo Buzzer:** High-decibel audio alert transducer driven via a transistor amplification switch.
-5. **Tactile Push Buttons:** Hardware switches wired with pull-up networks dedicated to low-latency external interrupts.
-6. **USB-to-UART Converter (CP2102 / PL2303):** For ISP (In-System Programming) via Flash Magic.
+---
 
 ### 📍 Physical Microcontroller Pin Interfacing Map
 
-| Peripheral Module | LPC2148 Hardware Pin | Pin Direction | Functional Description |
+| Peripheral Module | LPC2148 Pin | Direction | Functional Description |
 | :--- | :--- | :--- | :--- |
-| **Switch 1 (Setup)** | `P0.1 / EINT0` | Input | Triggers Mode Transition to Configuration Menu |
-| **Switch 2 (Ack)** | `P0.3 / EINT1` | Input | Acknowledges / Silences Active Medicine Alarm |
-| **Piezo Buzzer** | `P0.23` | Output | Drives Audio Alarm Waveform (Active High) |
-| **16x2 LCD Data** | `P0.16` to `P0.23` (8-Bit) | Output | Transmits Character Parallel ASCII Data Bytes |
-| **16x2 LCD Control**| `P0.12 (RS)`, `P0.13 (RW)`, `P0.15 (E)` | Output | Controls Register Select, Read/Write, and Clock Enable Latches |
-| **4x4 Keypad Rows** | `P0.8` - `P0.11` | Output | Sequential Scanning Drive Rows |
-| **4x4 Keypad Cols** | `P0.4` - `P0.7` | Input | Monitored Input Pins with Internal Pull-Ups |
----
-
+| 🔘 **Switch 1 (Setup)** | `P0.1 / EINT0` | **INPUT** | Triggers Mode Transition to Configuration Menu |
+| 🔘 **Switch 2 (Ack)** | `P0.3 / EINT1` | **INPUT** | Acknowledges / Silences Active Medicine Alarm |
+| 🔔 **Piezo Buzzer** | `P0.23` | **OUTPUT** | Drives Audio Alarm Waveform (Active High) |
+| 📺 **16x2 LCD Data** | `P0.16` to `P0.23` | **OUTPUT** | Transmits Character Parallel ASCII Data Bytes (8-Bit Mode) |
+| 🎛️ **16x2 LCD Control** | `P0.12`, `P0.13`, `P0.15` | **OUTPUT** | Controls Register Select (RS), Read/Write (RW), and Enable (E) |
+| ⌨️ **4x4 Keypad Rows** | `P0.8` to `P0.11` | **OUTPUT** | Sequential Scanning Drive Rows |
+| ⌨️ **4x4 Keypad Cols** | `P0.4` to `P0.7` | **INPUT** | Monitored Input Pins with Internal Pull-Ups |
 ## ⚙️ Low-Level Driver Architecture & Firmware Design
 
 The firmware is engineered modularly, featuring isolated hardware abstraction layer (HAL) driver files:
@@ -106,7 +106,7 @@ Handles real-time priority context switching for critical user inputs.
 * `void eint1_isr(void) __irq;` → Low-latency interrupt response for **Switch 2** to silence the buzzer immediately.
 
 ---
-
+```text
 [ POWER ON SYSTEM ]
             |
             v
@@ -148,7 +148,7 @@ Handles real-time priority context switching for critical user inputs.
 |                               |
 v                               v
 +-------------------------------+---------------------> [ Return to Background Loop ]---
-
+```
 ## 📈 Project Advantages vs. Real-World Limitations
 
 ### 🟢 Value-Added Benefits
