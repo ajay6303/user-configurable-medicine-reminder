@@ -40,7 +40,7 @@ The system coordinates several synchronous and asynchronous peripherals through 
     |                                                        |
     |    +-------------------+      +-------------------+    |
     |    |   Vectored Clear  |      |   Internal Real   |    |
-    |    |   Interrupt Handler |      | Time Clock (RTC)  |    |
+    |    | Interrupt Handler |      | Time Clock (RTC)  |    |
     |    +-------------------+      +-------------------+    |
     +---------------------|----------------------|-----------+
                           |                      |
@@ -49,7 +49,7 @@ The system coordinates several synchronous and asynchronous peripherals through 
     |                OUTPUT & ALERT SYSTEM                   |
     |                                                        |
     |   +-------------------+        +-------------------+   |
-    |   |   16x2 Alphanumeric|        |  Piezo Buzzer     |   |
+    |   |  16x2 Alphanumeric|        |  Piezo Buzzer     |   |
     |   |   LCD (Character) |        |  Alarm (P0.23)    |   |
     |   +-------------------+        +-------------------+   |
     |                                                        |
