@@ -1,9 +1,9 @@
-
-#define ROW0 16 //P1.16
+//rows
+#define ROW0 16 //P1.16 
 #define ROW1 17
 #define ROW2 18
 #define ROW3 19
-
+//colums
 #define COL0 20
 #define COL1 22
 #define COL2 22
