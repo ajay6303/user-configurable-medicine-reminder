@@ -80,7 +80,6 @@ The system coordinates several synchronous and asynchronous peripherals through 
 | **16x2 LCD Control**| `P0.12 (RS)`, `P0.13 (RW)`, `P0.15 (E)` | Output | Controls Register Select, Read/Write, and Clock Enable Latches |
 | **4x4 Keypad Rows** | `P0.8` - `P0.11` | Output | Sequential Scanning Drive Rows |
 | **4x4 Keypad Cols** | `P0.4` - `P0.7` | Input | Monitored Input Pins with Internal Pull-Ups |
-
 ---
 
 ## ⚙️ Low-Level Driver Architecture & Firmware Design
