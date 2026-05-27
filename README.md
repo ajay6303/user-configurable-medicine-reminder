@@ -57,7 +57,8 @@ The system coordinates several synchronous and asynchronous peripherals through 
     |                        |  Switch 2 (P0.3)  |           |
     |                        | [EINT1 Ack Alarm] |           |
     |                        +-------------------+           |
-    +--------------------------------------------------------+---
+    +--------------------------------------------------------+
+---
 ```
 ---
 ### 🛠️ Core Hardware Requirements
