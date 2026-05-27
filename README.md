@@ -79,10 +79,10 @@ The system coordinates several synchronous and asynchronous peripherals through 
 | 🔘 **Switch 1 (Setup)** | `P0.1 / EINT0` | **INPUT** | Triggers Mode Transition to Configuration Menu |
 | 🔘 **Switch 2 (Ack)** | `P0.3 / EINT1` | **INPUT** | Acknowledges / Silences Active Medicine Alarm |
 | 🔔 **Piezo Buzzer** | `P0.23` | **OUTPUT** | Drives Audio Alarm Waveform (Active High) |
-| 📺 **16x2 LCD Data** | `P0.16` to `P0.23` | **OUTPUT** | Transmits Character Parallel ASCII Data Bytes (8-Bit Mode) |
-| 🎛️ **16x2 LCD Control** | `P0.12`, `P0.13`, `P0.15` | **OUTPUT** | Controls Register Select (RS), Read/Write (RW), and Enable (E) |
-| ⌨️ **4x4 Keypad Rows** | `P0.8` to `P0.11` | **OUTPUT** | Sequential Scanning Drive Rows |
-| ⌨️ **4x4 Keypad Cols** | `P0.4` to `P0.7` | **INPUT** | Monitored Input Pins with Internal Pull-Ups |
+| 📺 **16x2 LCD Data** | `P0.8` to `P0.15` | **OUTPUT** | Transmits Character Parallel ASCII Data Bytes (8-Bit Mode) |
+| 🎛️ **16x2 LCD Control** | `P0.18`, `P0.17`, `P0.19` | **OUTPUT** | Controls Register Select (RS), Read/Write (RW), and Enable (E) |
+| ⌨️ **4x4 Keypad Rows** | `P1.16` to `P1.19` | **OUTPUT** | Sequential Scanning Drive Rows |
+| ⌨️ **4x4 Keypad Cols** | `P1.20` to `P1.23` | **INPUT** | Monitored Input Pins with Internal Pull-Ups |
 ## ⚙️ Low-Level Driver Architecture & Firmware Design
 
 The firmware is engineered modularly, featuring isolated hardware abstraction layer (HAL) driver files:
