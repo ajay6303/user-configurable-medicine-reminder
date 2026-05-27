@@ -108,7 +108,7 @@ Handles real-time priority context switching for critical user inputs.
 
 ---
 
-(https://github.com/ajay6303/user-configurable-medicine-reminder/blob/662f990da34c75aba6c64095cd84b48c8aa50fce/mini%20project%20flow%20chart.png)
+![image alt](https://github.com/ajay6303/user-configurable-medicine-reminder/blob/662f990da34c75aba6c64095cd84b48c8aa50fce/mini%20project%20flow%20chart.png)
 
 ---
 ## 📈 Project Advantages vs. Real-World Limitations
