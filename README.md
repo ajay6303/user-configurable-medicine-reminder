@@ -58,7 +58,7 @@ The system coordinates several synchronous and asynchronous peripherals through 
     |                        | [EINT1 Ack Alarm] |           |
     |                        +-------------------+           |
     +--------------------------------------------------------+
----
+
 ```
 ---
 ### 🛠️ Core Hardware Requirements
