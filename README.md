@@ -24,42 +24,8 @@ The core objective of this project is to build a standalone **User-Configurable 
 
 The system coordinates several synchronous and asynchronous peripherals through the LPC2148 central processing unit:
 
-```text
-    +--------------------------------------------------------+
-    |                 INPUT & CONTROL UNITS                  |
-    |                                                        |
-    |   +-------------------+        +-------------------+   |
-    |   | 4x4 Matrix Keypad |        |   Switch 1 (P0.1) |   |
-    |   | (Data Entry Mode) |        | [EINT0 Setup Mode]|   |
-    |   +---------+---------+        +---------+---------+   |
-    +-------------|----------------------------|-------------+
-                  |                            |
-                  v                            v
-    +--------------------------------------------------------+
-    |             CENTRAL PROCESSING UNIT (LPC2148)          |
-    |                                                        |
-    |    +-------------------+      +-------------------+    |
-    |    |   Vectored Clear  |      |   Internal Real   |    |
-    |    | Interrupt Handler |      | Time Clock (RTC)  |    |
-    |    +-------------------+      +-------------------+    |
-    +---------------------|----------------------|-----------+
-                          |                      |
-                          v                      v
-    +--------------------------------------------------------+
-    |                OUTPUT & ALERT SYSTEM                   |
-    |                                                        |
-    |   +-------------------+        +-------------------+   |
-    |   |  16x2 Alphanumeric|        |  Piezo Buzzer     |   |
-    |   |   LCD (Character) |        |  Alarm (P0.23)    |   |
-    |   +-------------------+        +-------------------+   |
-    |                                                        |
-    |                        +-------------------+           |
-    |                        |  Switch 2 (P0.3)  |           |
-    |                        | [EINT1 Ack Alarm] |           |
-    |                        +-------------------+           |
-    +--------------------------------------------------------+
+![image alt](https://github.com/ajay6303/user-configurable-medicine-reminder/blob/bf6723d0c720efc397452e1e6c79a8063e58c299/interface.png)
 
-```
 ---
 ### 🛠️ Core Hardware Requirements
 
