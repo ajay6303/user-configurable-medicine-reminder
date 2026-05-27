@@ -107,49 +107,10 @@ Handles real-time priority context switching for critical user inputs.
 * `void eint1_isr(void) __irq;` → Low-latency interrupt response for **Switch 2** to silence the buzzer immediately.
 
 ---
-```text
-[ POWER ON SYSTEM ]
-            |
-            v
- [ Peripheral Initialization ] ---> (Registers RTC, LCD, KPM, Buzzer, & VIC Interrupts)
-            |
-            v
-+---> [ CLOCK-ONLY MODE ]
-|           |
-|           +---> Continuously reads internal RTC registers.
-|           +---> Prints Current Time & Calendar date to 16x2 LCD screen.
-|           |
-|           v
-|    { Is Stored Memory Array Empty? }
-|           |
-|           +--- (YES) ---> Continuously loop inside Clock Mode (No Alerts Checked)
-|           +--- (NO)  ---> Move to Monitoring Loop
-|           |
-|           v
-|    [ MONITORING LOOP ]
-|           |
-|           v
-|    { Does Current Time == Stored Alarm Slot? }
-|           |
-|           +--- (NO)  ---> Keep checking next sequence iteration
-|           +--- (YES) ---> Trigger ALERT GENERATION STATE
-|                               |
-|                               v
-|                    [ ALERT GENERATION STATE ]
-|                               |
-|                               +---> Print "Take Medicine Now" on LCD
-|                               +---> Fire Periodic PWM Pulse to Buzzer (ON/OFF Pattern)
-|                               +---> Spin up 1-Minute Hardware Timeout Counter
-|                               |
-|                               v
-|                 { Check Interaction Window }
-|                               |
-|                               +---> [Switch 2 Pressed / EINT1] ---> Stop Buzzer, Clear Flags, Clear Text
-|                               +---> [1-Min Timeout Reached]    ---> Autostop Buzzer, Clear Message Log
-|                               |
-v                               v
-+-------------------------------+---------------------> [ Return to Background Loop ]---
-```
+
+(https://github.com/ajay6303/user-configurable-medicine-reminder/blob/662f990da34c75aba6c64095cd84b48c8aa50fce/mini%20project%20flow%20chart.png)
+
+---
 ## 📈 Project Advantages vs. Real-World Limitations
 
 ### 🟢 Value-Added Benefits
